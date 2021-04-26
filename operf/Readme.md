@@ -17,3 +17,10 @@ opreport [options] [profile specification]
 --xml / -X : xml형식으로 output
               Show source file and line for each symbol.
 --callgraph / -c : graph 정보를 보여줌.
+
+CPU별 sample과 symbol을 분석해보자.
+![image](https://user-images.githubusercontent.com/61117544/116153707-b3129c00-a722-11eb-9aae-68dd3d81cf9c.png)
+
+master core를 담당하고 있는 CPU 2번에서 pktgen실행 파일로부터 pktgen_script_save 함수를 CPU의 97.5346% 사용 중이다.
+CPU 3번은 receive를 담당하고 있는 코어로 pktgen_script_save 함수를 CPU의 99.9997% 사용 중이다.
+CPU 4번은 transmit를 담당하고 있는 코어로 pcap_filter가 84.9643%, pktgen_script_save가 7.2721%, pktgen_flags_string을 3.5186%, pktgen_port_stats를 2.4220% 사용중이다.
